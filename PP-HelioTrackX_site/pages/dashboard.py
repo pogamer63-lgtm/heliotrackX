@@ -1,5 +1,4 @@
 import streamlit as st
-import streamlit.components.v1 as components
 
 
 DASHBOARD_URL = (
@@ -8,7 +7,10 @@ DASHBOARD_URL = (
 )
 
 st.title("Solarpanel Timeseries Dashboard")
-st.caption("Eingebettete Ansicht des externen Dashboards")
-st.link_button("Dashboard in neuem Tab öffnen", DASHBOARD_URL, use_container_width=False)
-
-components.iframe(DASHBOARD_URL, height=900, scrolling=True)
+st.caption("Dashboard wird in einem neuen Tab geöffnet")
+st.link_button(
+    "Grafana-Dashboard in neuem Tab öffnen",
+    DASHBOARD_URL,
+    use_container_width=False,
+    type="primary",
+)
