@@ -43,6 +43,9 @@ product_info = st.Page(
 team = st.Page(
     "pages/team.py", title="Team", icon=":material/groups:"
 )
+dashboard = st.Page(
+    "pages/dashboard.py", title="Dashboard", icon=":material/monitoring:"
+)
 
-pg = st.navigation({" ": [landing, product_info, team]})
+pg = st.navigation({" ": [landing, product_info, team, dashboard]})
 pg.run()
