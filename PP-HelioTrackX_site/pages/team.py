@@ -105,7 +105,8 @@ def build_member_card(member: dict, image_uri: str) -> str:
     if image_uri:
         avatar = f'<img src="{image_uri}" alt="{member_name}" />'
     else:
-        avatar = f'<div class="avatar-placeholder">{initials_from_name(member["name"])}</div>'
+        initials = initials_from_name(member["name"])
+        avatar = f'<div class="avatar-placeholder">{initials}</div>'
 
     return f"""
       <article class="node-card {class_name}">
@@ -141,52 +142,56 @@ bottom_cards = "".join(
 st.markdown(
     """
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Space+Grotesk:wght@500;700&display=swap');
-
-      :root {
-        --bg-main: #04151d;
-        --bg-alt: #0a2733;
-        --card-soft: rgba(10, 39, 51, 0.72);
-        --line: rgba(255, 255, 255, 0.12);
-        --line-strong: rgba(255, 255, 255, 0.22);
-        --text: #f4fbff;
-        --muted: #b5c9d6;
-        --sun: #f7b731;
-      }
-
-      .stApp {
-        background:
-          radial-gradient(circle at 15% 20%, rgba(88, 214, 141, 0.16), transparent 40%),
-          radial-gradient(circle at 85% 10%, rgba(247, 183, 49, 0.18), transparent 30%),
-          linear-gradient(140deg, var(--bg-main) 0%, var(--bg-alt) 100%);
-      }
-
-      .main .block-container {
-        max-width: 1160px;
-        padding-top: 1.5rem;
-        padding-bottom: 3rem;
-      }
-
-      .org-shell {
-        font-family: "Manrope", sans-serif;
+      .tx {
+        font-family: 'Figtree', sans-serif;
         color: var(--text);
       }
 
+      /* ── HEADER ───────────────────────── */
+      .org-header {
+        margin-bottom: 1.8rem;
+        padding-bottom: 1.3rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .org-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        font-family: 'Space Mono', monospace;
+        font-size: 0.7rem;
+        letter-spacing: 0.2em;
+        color: var(--gold);
+        text-transform: uppercase;
+        margin-bottom: 0.55rem;
+      }
+
+      .org-label::before {
+        content: '';
+        display: inline-block;
+        width: 18px;
+        height: 2px;
+        background: var(--gold);
+        flex-shrink: 0;
+      }
+
       .org-title {
-        margin: 0 0 0.35rem 0;
-        font-family: "Space Grotesk", sans-serif;
-        font-size: clamp(1.9rem, 4vw, 2.9rem);
-        font-weight: 700;
+        margin: 0 0 0.3rem 0;
+        font-family: 'Archivo Black', sans-serif;
+        font-weight: 400;
+        font-size: clamp(1.8rem, 3.5vw, 2.7rem);
+        letter-spacing: -0.01em;
       }
 
       .org-subtitle {
-        margin: 0 0 1.35rem 0;
+        margin: 0;
         color: var(--muted);
-        font-size: 1.03rem;
+        font-size: 0.97rem;
       }
 
+      /* ── ORG CHART ────────────────────── */
       .org-chart {
-        width: min(950px, 100%);
+        width: min(960px, 100%);
         margin: 0 auto;
       }
 
@@ -197,33 +202,18 @@ st.markdown(
 
       .line {
         margin: 0 auto;
-        background: var(--line-strong);
+        background: rgba(245,158,11,0.3);
       }
 
-      .line-vertical-top {
-        width: 2px;
-        height: 46px;
-      }
-
-      .line-vertical-branch {
-        width: 2px;
-        height: 24px;
-      }
-
-      .line-horizontal {
-        width: min(74%, 760px);
-        height: 2px;
-      }
-
-      .line-bottom-connector {
-        width: 2px;
-        height: 28px;
-      }
+      .line-vertical-top    { width: 2px; height: 44px; }
+      .line-vertical-branch { width: 2px; height: 22px; }
+      .line-horizontal      { width: min(72%, 740px); height: 2px; }
+      .line-bottom-connector { width: 2px; height: 26px; }
 
       .row-bottom {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 1.2rem;
+        gap: 1rem;
         margin-top: 0;
       }
 
@@ -233,91 +223,110 @@ st.markdown(
         align-items: center;
       }
 
+      /* ── NODE CARDS ───────────────────── */
       .node-card {
-        border: 1px solid var(--line);
+        border: 1px solid var(--border);
         border-radius: 18px;
-        background: var(--card-soft);
-        backdrop-filter: blur(6px);
+        background: rgba(7,31,43,0.65);
+        backdrop-filter: blur(10px);
         text-align: center;
-        padding: 0.9rem 0.9rem 1rem 0.9rem;
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        padding: 1rem 1rem 1.1rem;
+        box-shadow: 0 16px 32px rgba(0,0,0,0.25);
+        position: relative;
+        overflow: hidden;
+        transition: border-color 0.25s, box-shadow 0.25s;
       }
 
-      .node-card--top {
-        width: 250px;
+      .node-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        opacity: 0;
+        transition: opacity 0.25s;
       }
 
-      .node-card--middle {
-        width: 300px;
+      .node-card:hover {
+        border-color: rgba(245,158,11,0.3);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.35), 0 0 0 1px rgba(245,158,11,0.1);
       }
 
-      .node-card--bottom {
-        width: 100%;
-      }
+      .node-card:hover::before { opacity: 1; }
 
+      .node-card--top    { width: 240px; }
+      .node-card--middle { width: 290px; }
+      .node-card--bottom { width: 100%; }
+
+      /* ── AVATARS ──────────────────────── */
       .avatar-wrap {
         display: flex;
         justify-content: center;
-        margin-bottom: 0.55rem;
+        margin-bottom: 0.65rem;
       }
 
       .avatar-wrap img,
       .avatar-placeholder {
-        width: 84px;
-        height: 84px;
+        width: 80px;
+        height: 80px;
         border-radius: 50%;
-        border: 2px solid rgba(255, 255, 255, 0.24);
+        border: 2px solid rgba(245,158,11,0.35);
         object-fit: cover;
-        background: rgba(255, 255, 255, 0.08);
+        background: rgba(245,158,11,0.08);
       }
 
       .avatar-placeholder {
         display: grid;
         place-items: center;
         font-weight: 700;
-        font-size: 1.05rem;
-        color: var(--text);
+        font-size: 1rem;
+        color: var(--gold);
+        font-family: 'Space Mono', monospace;
       }
 
       .node-name {
         margin: 0;
-        font-size: 1.18rem;
-        font-weight: 800;
-        line-height: 1.15;
+        font-family: 'Archivo Black', sans-serif;
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1.2;
         color: var(--text);
+        letter-spacing: -0.01em;
       }
 
       .node-role {
-        margin: 0.15rem 0 0 0;
+        margin: 0.2rem 0 0 0;
         color: var(--muted);
-        font-size: 0.98rem;
-        line-height: 1.2;
+        font-size: 0.84rem;
+        line-height: 1.3;
+        font-family: 'Space Mono', monospace;
       }
 
-      @media (max-width: 980px) {
-        .line-horizontal {
-          display: none;
-        }
+      /* ── ANIMATIONS ───────────────────── */
+      .fade-up { animation: fadeUp 0.75s cubic-bezier(0.22,1,0.36,1) both; }
+      .d1 { animation-delay: 0.08s; }
+      .d2 { animation-delay: 0.18s; }
 
-        .line-vertical-branch {
-          height: 20px;
-        }
+      @keyframes fadeUp {
+        from { transform: translateY(16px); opacity: 0; }
+        to   { transform: translateY(0);    opacity: 1; }
+      }
 
-        .line-bottom-connector {
-          display: none;
-        }
-
+      /* ── RESPONSIVE ───────────────────── */
+      @media (max-width: 900px) {
+        .line-horizontal      { display: none; }
+        .line-vertical-branch { height: 18px; }
+        .line-bottom-connector { display: none; }
         .row-bottom {
           grid-template-columns: 1fr;
-          max-width: 320px;
+          max-width: 300px;
           margin: 0 auto;
-          gap: 0.95rem;
+          gap: 0.85rem;
         }
-
         .node-card--top,
-        .node-card--middle {
-          width: min(320px, 100%);
-        }
+        .node-card--middle { width: min(300px, 100%); }
       }
     </style>
     """,
@@ -326,11 +335,14 @@ st.markdown(
 
 st.markdown(
     f"""
-    <section class="org-shell">
-      <h1 class="org-title">Unser Team</h1>
-      <p class="org-subtitle">Die Teamstruktur von HelioTrackX im Überblick.</p>
+    <div class="tx">
+      <div class="org-header fade-up">
+        <div class="org-label">Organisation</div>
+        <h1 class="org-title">Unser Team</h1>
+        <p class="org-subtitle">Die Teamstruktur von HelioTrackX im Überblick.</p>
+      </div>
 
-      <div class="org-chart">
+      <div class="org-chart fade-up d1">
         <div class="row-center">{top_card}</div>
         <div class="line line-vertical-top"></div>
         <div class="row-center">{middle_card}</div>
@@ -338,7 +350,7 @@ st.markdown(
         <div class="line line-horizontal"></div>
         <div class="row-bottom">{bottom_cards}</div>
       </div>
-    </section>
+    </div>
     """,
     unsafe_allow_html=True,
 )
