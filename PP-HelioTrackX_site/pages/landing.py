@@ -459,125 +459,121 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+# ── HERO ─────────────────────────────────────────────────────
 st.markdown(
     f"""
-    <div class="lx">
-      <section class="hero">
-        <div class="panel fade-up">
-          <div class="eyebrow">Autonome Solartechnologie</div>
-          <h1 class="headline">HelioTrackX richtet Solarzellen automatisch zum <em>stärksten Licht</em> aus.</h1>
-          <p class="subline">
-            Die adaptive Nachführung steigert den Energieertrag über den gesamten Tagesverlauf
-            und reduziert Leistungsverluste bei wechselnder Einstrahlung.
-          </p>
-          <div class="cta-row">
-            <a class="btn btn-secondary" href="#funktion">Funktionsweise ansehen →</a>
+    <section class="hero fade-up">
+      <div class="panel">
+        <div class="eyebrow">Autonome Solartechnologie</div>
+        <h1 class="headline">HelioTrackX richtet Solarzellen automatisch zum <em>stärksten Licht</em> aus.</h1>
+        <p class="subline">Die adaptive Nachführung steigert den Energieertrag über den gesamten Tagesverlauf und reduziert Leistungsverluste bei wechselnder Einstrahlung.</p>
+        <div class="cta-row">
+          <a class="btn btn-secondary" href="#funktion">Funktionsweise ansehen →</a>
+        </div>
+        <p class="micro">// Für Industrie, Gewerbe und dezentrale Energiesysteme</p>
+      </div><div class="panel fade-up d1">
+        <div class="brand-panel">
+          <div class="brand-orbit-wrap">
+            <div class="pulse-ring"></div><div class="pulse-ring"></div><div class="pulse-ring"></div>
+            {logo_html}
           </div>
-          <p class="micro">// Für Industrie, Gewerbe und dezentrale Energiesysteme</p>
-        </div>
-        <div class="panel fade-up d1">
-          <div class="brand-panel">
-            <div class="brand-orbit-wrap">
-              <div class="pulse-ring"></div>
-              <div class="pulse-ring"></div>
-              <div class="pulse-ring"></div>
-              {logo_html}
-            </div>
-            <p class="brand-text">
-              Sensorik + Motorik + Steuerlogik: Das Modul reagiert in Echtzeit auf Lichtveränderungen.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <div class="stats-bar fade-up d2">
-        <div class="stat">
-          <p class="stat-kpi">+32%</p>
-          <p class="stat-text">Mehr Tagesertrag durch dynamische Lichtausrichtung</p>
-        </div>
-        <div class="stat">
-          <p class="stat-kpi">24/7</p>
-          <p class="stat-text">Automatisierter Betrieb ohne manuelle Nachjustierung</p>
-        </div>
-        <div class="stat">
-          <p class="stat-kpi">200°</p>
-          <p class="stat-text">Kontinuierliche Anpassung an Sonnenstand und Reflexionslicht</p>
+          <p class="brand-text">Sensorik + Motorik + Steuerlogik: Das Modul reagiert in Echtzeit auf Lichtveränderungen.</p>
         </div>
       </div>
+    </section>
+    """,
+    unsafe_allow_html=True,
+)
 
-      <section class="section fade-up d3">
-        <div class="section-header">
-          <h2 class="section-title">Warum HelioTrackX?</h2>
-          <div class="section-line"></div>
-        </div>
-        <div class="grid-2">
-          <article class="feature-card">
-            <h3 class="feature-title">Hoher Ertrag bei wechselndem Wetter</h3>
-            <p class="feature-copy">Das System folgt nicht nur dem geometrischen Sonnenpfad, sondern auch den stärksten realen Lichtquellen bei Wolken und diffuser Einstrahlung.</p>
-          </article>
-          <article class="feature-card">
-            <h3 class="feature-title">Schnelle Integration</h3>
-            <p class="feature-copy">Die Architektur passt in neue Anlagen und kann als Upgrade in vorhandene Systeme integriert werden.</p>
-          </article>
-<article class="feature-card">
-            <h3 class="feature-title">Datentransparenz in Echtzeit</h3>
-            <p class="feature-copy">Alle Bewegungs- und Leistungsdaten sind für Monitoring, Reporting und Optimierung zentral abrufbar.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section" id="funktion">
-        <div class="section-header">
-          <h2 class="section-title">So funktioniert das System</h2>
-          <div class="section-line"></div>
-        </div>
-        <div class="steps">
-          <article class="step">
-            <div class="step-index">// Schritt 01</div>
-            <h3 class="step-title">Licht messen</h3>
-            <p class="step-copy">Lichtsensoren erfassen Richtung und Intensität der Einstrahlung in kurzen Intervallen.</p>
-          </article>
-          <article class="step">
-            <div class="step-index">// Schritt 02</div>
-            <h3 class="step-title">Ausrichtung berechnen</h3>
-            <p class="step-copy">Die Steuerlogik ermittelt den optimalen Winkel für maximalen Energieeintrag.</p>
-          </article>
-          <article class="step">
-            <div class="step-index">// Schritt 03</div>
-            <h3 class="step-title">Modul nachführen</h3>
-            <p class="step-copy">Die Motorik richtet das Panel präzise aus und validiert den Effekt in Echtzeit.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="section-header">
-          <h2 class="section-title">Einsatzbereiche</h2>
-          <div class="section-line"></div>
-        </div>
-        <div class="chips">
-          <span class="chip">Solarparks</span>
-          <span class="chip">Dachflächen Gewerbe</span>
-          <span class="chip">Inselnetze</span>
-          <span class="chip">Smart-City-Infrastruktur</span>
-          <span class="chip">Agrivoltaik</span>
-          <span class="chip">Ladeinfrastruktur</span>
-        </div>
-      </section>
-
-      <section class="cta">
-        <div class="cta-text">
-          <h3>HelioTrackX im praktischen Einsatz</h3>
-          <p>Ob Neuinstallation oder Nachrüstung: HelioTrackX sorgt für maximale Lichtausnutzung und stabile Leistung über den gesamten Tagesverlauf.</p>
-          <p class="note">* Potenzialwerte sind standort- und systemabhängig.</p>
-        </div>
-        <div class="cta-chips">
-          <span class="chip">Automatische Ausrichtung</span>
-          <span class="chip">Sicherheitslogik integriert</span>
-          <span class="chip">Skalierbar</span>
-        </div>
-      </section>
+# ── STATS ─────────────────────────────────────────────────────
+st.markdown(
+    """
+    <div class="stats-bar fade-up d2">
+      <div class="stat"><p class="stat-kpi">+32%</p><p class="stat-text">Mehr Tagesertrag durch dynamische Lichtausrichtung</p></div><div class="stat"><p class="stat-kpi">24/7</p><p class="stat-text">Automatisierter Betrieb ohne manuelle Nachjustierung</p></div><div class="stat"><p class="stat-kpi">200°</p><p class="stat-text">Kontinuierliche Anpassung an Sonnenstand und Reflexionslicht</p></div>
     </div>
+    """,
+    unsafe_allow_html=True,
+)
+
+# ── WARUM HELIOTRACKX ─────────────────────────────────────────
+st.markdown(
+    """
+    <div class="section-header" style="margin-top:2rem;margin-bottom:1.1rem;">
+      <h2 class="section-title">Warum HelioTrackX?</h2>
+      <div class="section-line"></div>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+_wc1, _wc2, _wc3 = st.columns(3, gap="small")
+with _wc1:
+    st.markdown(
+        """<article class="feature-card"><h3 class="feature-title">Hoher Ertrag bei wechselndem Wetter</h3><p class="feature-copy">Das System folgt nicht nur dem geometrischen Sonnenpfad, sondern auch den stärksten realen Lichtquellen bei Wolken und diffuser Einstrahlung.</p></article>""",
+        unsafe_allow_html=True,
+    )
+with _wc2:
+    st.markdown(
+        """<article class="feature-card"><h3 class="feature-title">Schnelle Integration</h3><p class="feature-copy">Die Architektur passt in neue Anlagen und kann als Upgrade in vorhandene Systeme integriert werden.</p></article>""",
+        unsafe_allow_html=True,
+    )
+with _wc3:
+    st.markdown(
+        """<article class="feature-card"><h3 class="feature-title">Datentransparenz in Echtzeit</h3><p class="feature-copy">Alle Bewegungs- und Leistungsdaten sind für Monitoring, Reporting und Optimierung zentral abrufbar.</p></article>""",
+        unsafe_allow_html=True,
+    )
+
+# ── SO FUNKTIONIERT DAS SYSTEM ────────────────────────────────
+st.markdown(
+    """
+    <div class="section-header" style="margin-top:2rem;margin-bottom:1.1rem;" id="funktion">
+      <h2 class="section-title">So funktioniert das System</h2>
+      <div class="section-line"></div>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+_sc1, _sc2, _sc3 = st.columns(3, gap="small")
+with _sc1:
+    st.markdown(
+        """<article class="step"><div class="step-index">// Schritt 01</div><h3 class="step-title">Licht messen</h3><p class="step-copy">Lichtsensoren erfassen Richtung und Intensität der Einstrahlung in kurzen Intervallen.</p></article>""",
+        unsafe_allow_html=True,
+    )
+with _sc2:
+    st.markdown(
+        """<article class="step"><div class="step-index">// Schritt 02</div><h3 class="step-title">Ausrichtung berechnen</h3><p class="step-copy">Die Steuerlogik ermittelt den optimalen Winkel für maximalen Energieeintrag.</p></article>""",
+        unsafe_allow_html=True,
+    )
+with _sc3:
+    st.markdown(
+        """<article class="step"><div class="step-index">// Schritt 03</div><h3 class="step-title">Modul nachführen</h3><p class="step-copy">Die Motorik richtet das Panel präzise aus und validiert den Effekt in Echtzeit.</p></article>""",
+        unsafe_allow_html=True,
+    )
+
+# ── EINSATZBEREICHE ───────────────────────────────────────────
+st.markdown(
+    """
+    <div style="margin-top:2rem;">
+      <div class="section-header" style="margin-bottom:1rem;">
+        <h2 class="section-title">Einsatzbereiche</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="chips"><span class="chip">Solarparks</span><span class="chip">Dachflächen Gewerbe</span><span class="chip">Inselnetze</span><span class="chip">Smart-City-Infrastruktur</span><span class="chip">Agrivoltaik</span><span class="chip">Ladeinfrastruktur</span></div>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+
+# ── CTA ───────────────────────────────────────────────────────
+st.markdown(
+    """
+    <section class="cta">
+      <div class="cta-text">
+        <h3>HelioTrackX im praktischen Einsatz</h3>
+        <p>Ob Neuinstallation oder Nachrüstung: HelioTrackX sorgt für maximale Lichtausnutzung und stabile Leistung über den gesamten Tagesverlauf.</p>
+        <p class="note">* Potenzialwerte sind standort- und systemabhängig.</p>
+      </div>
+      <div class="cta-chips"><span class="chip">Automatische Ausrichtung</span><span class="chip">Sicherheitslogik integriert</span><span class="chip">Skalierbar</span></div>
+    </section>
     """,
     unsafe_allow_html=True,
 )
