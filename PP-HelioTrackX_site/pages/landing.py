@@ -519,11 +519,7 @@ st.markdown(
             <h3 class="feature-title">Schnelle Integration</h3>
             <p class="feature-copy">Die Architektur passt in neue Anlagen und kann als Upgrade in vorhandene Systeme integriert werden.</p>
           </article>
-          <article class="feature-card">
-            <h3 class="feature-title">Intelligente Schutzlogik</h3>
-            <p class="feature-copy">Bei Windspitzen oder technischen Grenzwerten wechselt HelioTrackX automatisch in definierte Sicherheitspositionen.</p>
-          </article>
-          <article class="feature-card">
+<article class="feature-card">
             <h3 class="feature-title">Datentransparenz in Echtzeit</h3>
             <p class="feature-copy">Alle Bewegungs- und Leistungsdaten sind für Monitoring, Reporting und Optimierung zentral abrufbar.</p>
           </article>
