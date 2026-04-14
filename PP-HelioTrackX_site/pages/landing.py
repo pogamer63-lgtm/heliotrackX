@@ -500,7 +500,7 @@ st.markdown(
           <p class="stat-text">Automatisierter Betrieb ohne manuelle Nachjustierung</p>
         </div>
         <div class="stat">
-          <p class="stat-kpi">360°</p>
+          <p class="stat-kpi">200°</p>
           <p class="stat-text">Kontinuierliche Anpassung an Sonnenstand und Reflexionslicht</p>
         </div>
       </div>
